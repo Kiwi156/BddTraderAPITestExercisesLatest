@@ -209,9 +209,8 @@
                 </configuration>
             </plugin>
             <plugin>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0-M3</version>
-                <configuration>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <configuration>
                     <includes>
                         <include>**/*.java</include>
                         <exclude>**/unittests/**/*.java</exclude>
