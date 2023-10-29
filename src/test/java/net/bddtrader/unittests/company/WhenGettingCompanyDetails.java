@@ -5,6 +5,7 @@ import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItems;
 
 public class WhenGettingCompanyDetails {
@@ -26,6 +27,7 @@ public class WhenGettingCompanyDetails {
                 .body("companyName", Matchers.equalTo("Apple, Inc."))
                 .body("sector", Matchers.equalTo("Electronic Technology"));
     }
+
     @Test
     public void shouldReturnNewsForARequestedCompany() {
 
@@ -35,6 +37,7 @@ public class WhenGettingCompanyDetails {
                 .then()
                 .body("related", Matchers.everyItem(Matchers.containsString("FB")));
     }
+
     @Test
     public void findASimpleFieldValue() {
 
@@ -48,7 +51,7 @@ public class WhenGettingCompanyDetails {
     }
 
     @Test
-    public void checkThatAFieldValueContainsAGivenString(){
+    public void checkThatAFieldValueContainsAGivenString() {
 
         RestAssured.given()
                 .pathParam("symbol", "aapl")
@@ -58,8 +61,9 @@ public class WhenGettingCompanyDetails {
                 .body("description", Matchers.containsString("smartphones"));
 
     }
+
     @Test
-    public void findANestedFieldValue(){
+    public void findANestedFieldValue() {
 
         RestAssured.given().pathParam("symbol", "aapl")
                 .when()
@@ -67,8 +71,9 @@ public class WhenGettingCompanyDetails {
                 .then().body("quote.symbol", Matchers.equalTo("AAPL"));
 
     }
+
     @Test
-    public void findAListOfValues(){
+    public void findAListOfValues() {
 
         RestAssured.when()
                 .get("/tops/last")
@@ -76,6 +81,7 @@ public class WhenGettingCompanyDetails {
 
 
     }
+
     @Test
     public void makeSureAtLeastOneItemMatchesAGivenCondition() {
 
@@ -85,5 +91,68 @@ public class WhenGettingCompanyDetails {
 
     }
 
+    @Test
+    public void findAFieldOfAnElementInAList() {
+
+        RestAssured.given()
+                .pathParam("symbol", "aapl")
+                .when()
+                .get("stock/{symbol}/book")
+                .then().body("trades[0].price", equalTo(319.59f));
+
+    }
+
+    @Test
+    public void findAFieldOfALastElementInAList() {
+
+        RestAssured.given()
+                .pathParam("symbol", "aapl")
+                .when()
+                .get("stock/{symbol}/book")
+                .then().body("trades[-1].price", equalTo(319.54f));
+
+        // -1 represents the last value of list.
+    }
+
+    @Test
+    public void findTheNumberOfTrades() {
+
+        RestAssured.given()
+                .pathParam("symbol", "aapl")
+                .when()
+                .get("stock/{symbol}/book")
+                .then().body("trades.size()", equalTo(20));
+    }
+
+    @Test
+    public void findTheMinimumPrice() {
+
+        RestAssured.given()
+                .pathParam("symbol", "aapl")
+                .when()
+                .get("stock/{symbol}/book")
+                .then().body("trades.price.min()", equalTo(319.38F));
+    }
+
+    @Test
+    public void findTheSizeofTheTradeWithTheMinimumTradePrice() {
+
+        RestAssured.given()
+                .pathParam("symbol", "aapl")
+                .when()
+                .get("stock/{symbol}/book")
+                .then().body("trades.min {it.price}.volume", equalTo(100f));
+    }
+
+    @Test
+    public void findTheTradeWithTheMinimumTradePrice() {
+
+        RestAssured.given()
+                .pathParam("symbol", "aapl")
+                .when()
+                .get("stock/{symbol}/book")
+                .then().body("trades.findAll{t->t.price > 319.50}.size()", equalTo(13));
+
+    }
 }
 
