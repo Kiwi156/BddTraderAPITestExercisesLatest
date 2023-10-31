@@ -141,7 +141,7 @@ public class WhenGettingCompanyDetails {
                 .pathParam("symbol", "aapl")
                 .when()
                 .get("stock/{symbol}/book")
-                .then().body("trades.min {it.price}.volume", equalTo(100f));
+                .then().body("trades.min {it.price}.volume", equalTo(100F));
     }
 
     @Test
