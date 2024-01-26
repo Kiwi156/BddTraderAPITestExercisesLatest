@@ -24,8 +24,9 @@ The goal of the different exercises included writing API tests that:
 
 # Techniques Learned
 
-I learned how to work with JSON Path to find an item within the JSON and then use Hamcrest Matcher to make assertions about what should be in the JSON. We also covered a complex example using Groovy Closure and JSON experssions that return collections.   
+I learned how to work with **JSON Path** to find an item within the JSON and then use **Hamcrest Matcher** to make assertions about what should be in the JSON. We also covered a complex example using **Groovy Closure** and **JSON expressions that return collections**.   
 
+I also got to practise using using a variety of API methods, see the list under the goals section above. 
 
 
 
