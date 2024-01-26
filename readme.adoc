@@ -1,6 +1,6 @@
 # BDD Trader application
 
-In this exercise I practised testing REST APIs using REST Assured, Serenity BDD, JUnit, Hamcrest Matchers and maps with Java. 
+In this exercise I demonstrate testing REST APIs using REST Assured, Serenity BDD, JUnit, Hamcrest Matchers and maps with Java. 
 
 The BDD Trader application was used as part of the Testing REST APIs with Serenity BDD and RestAssured course to learn Agile Test Automation at the Serenity Dojo Academy.  
 
@@ -8,13 +8,19 @@ The API documentation can be found at the following location: https://bddtrader.
 
 # Goal 
 
-The goal of this exercise was to follow along with the training and then add some addtional API tests. 
+The goal of the different exercises were to write API tests that:
+* Retrieved resources with GET queries
+* Located items using JSON Path 
+* Checked data using Hamcrest Matchers
+* Created new resources with POST methods
+* Updated resources using PUT methods
 
 # Techniques Learned
 
+I also got to practise using the different HTTP methods to see the actual examples of the methods.
+
 During this exercise I learnt that the HTTP status codes are useful in understanding the results of the request.
 
-I also got to practise using the different HTTP methods to see the actual examples of the methods.
 
 
 
