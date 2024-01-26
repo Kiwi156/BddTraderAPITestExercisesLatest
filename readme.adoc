@@ -9,11 +9,17 @@ The API documentation can be found at the following location: https://bddtrader.
 # Goal 
 
 The goal of the different exercises included writing API tests that:
+
 •Retrieved resources with GET queries
+
 •Located items using JSON Path 
+
 •Checked resources using Hamcrest Matchers
+
 •Created new resources with POST methods
+
 •Updated resources using PUT methods
+
 •Deleted resource using DELETE request
 
 
