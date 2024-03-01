@@ -26,7 +26,7 @@ The goal of the different exercises included writing API tests that:
 
 I learned how to work with **JSON Path** to find an item within the JSON and then use **Hamcrest Matcher** to make assertions about what should be in the JSON. We also covered **JSON expressions that return collections**.   
 
-I also got to practise using a variety of API methods, see the list under the goals section above. 
+I also practised using a variety of API methods, see the list under the goals section above. 
 
 
 
